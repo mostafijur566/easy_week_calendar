@@ -22,7 +22,7 @@ Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  easy_week_calendar: ^1.0.0
+  easy_week_calendar: ^1.0.1
 ```
 
 Next, import the package
