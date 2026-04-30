@@ -14,6 +14,9 @@ A sleek and flexible week-view calendar for Flutter. Easily manage date selectio
 
 - **📱 Responsive:** Optimized for different screen widths using Expanded and GridView.
 
+## Preview
+![EasyWeekCalendar Demo](https://github.com/mostafijur566/easy_week_calendar/blob/main/assets/demo.gif)
+
 ## Installation
 
 Add the following dependency to your `pubspec.yaml` file:
