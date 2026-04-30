@@ -537,25 +537,27 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                                 : FontWeight.normal,
                           ),
                         ),
-                        const SizedBox(height: 4),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 6,
-                            vertical: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            color: isSelected ? Colors.white : primaryColor,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            '$eventCount',
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: isSelected ? primaryColor : Colors.white,
+                        if(widget.eventCounts != null)...[
+                          const SizedBox(height: 4),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6,
+                              vertical: 2,
+                            ),
+                            decoration: BoxDecoration(
+                              color: isSelected ? Colors.white : primaryColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(
+                              '$eventCount',
+                              style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                                color: isSelected ? primaryColor : Colors.white,
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                         const SizedBox(height: 4),
                         Container(
                           width: 32,
