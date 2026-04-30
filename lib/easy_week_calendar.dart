@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 /// A customizable calendar widget that displays weeks and allows date selection.
 ///
 /// The calendar shows a week view with Monday as the first day of the week.
@@ -72,7 +73,10 @@ class EasyWeekCalendar extends StatefulWidget {
     this.separatedColor,
     this.leftArrowIcon,
     this.rightArrowIcon,
-    this.iconColor, this.monthYearTextColor, this.activatedDayTextColor, this.inactivatedDayTextColor,
+    this.iconColor,
+    this.monthYearTextColor,
+    this.activatedDayTextColor,
+    this.inactivatedDayTextColor,
     this.firstDayOfWeek = StartDay.monday,
     this.onWeekChanged,
     this.eventCounts,
@@ -86,7 +90,7 @@ class EasyWeekCalendar extends StatefulWidget {
 /// Custom colors for the calendar widget.
 class CalendarColors {
   /// Primary color for selections and highlights.
-  final Color  primaryColor;
+  final Color primaryColor;
 
   /// Background color for selected date.
   final Color selectedBackgroundColor;
@@ -119,13 +123,20 @@ extension StartDayExtension on StartDay {
   /// Maps our enum to DateTime weekday integers (1-7)
   int get value {
     switch (this) {
-      case StartDay.monday: return 1;
-      case StartDay.tuesday: return 2;
-      case StartDay.wednesday: return 3;
-      case StartDay.thursday: return 4;
-      case StartDay.friday: return 5;
-      case StartDay.saturday: return 6;
-      case StartDay.sunday: return 7;
+      case StartDay.monday:
+        return 1;
+      case StartDay.tuesday:
+        return 2;
+      case StartDay.wednesday:
+        return 3;
+      case StartDay.thursday:
+        return 4;
+      case StartDay.friday:
+        return 5;
+      case StartDay.saturday:
+        return 6;
+      case StartDay.sunday:
+        return 7;
     }
   }
 }
@@ -276,10 +287,10 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                     Expanded(
                       child: GridView.builder(
                         gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          childAspectRatio: 2,
-                        ),
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              childAspectRatio: 2,
+                            ),
                         itemCount: 12,
                         itemBuilder: (context, index) {
                           final month = index + 1;
@@ -298,14 +309,15 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                               decoration: BoxDecoration(
                                 color: isSelected
                                     ? widget.colors?.primaryColor.withValues(
-                                  alpha: 0.2,
-                                ) ??
-                                    Colors.blue.withValues(alpha: 0.2)
+                                            alpha: 0.2,
+                                          ) ??
+                                          Colors.blue.withValues(alpha: 0.2)
                                     : Colors.transparent,
                                 borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
                                   color: isSelected
-                                      ? widget.colors?.primaryColor ?? Colors.blue
+                                      ? widget.colors?.primaryColor ??
+                                            Colors.blue
                                       : Colors.grey.shade300,
                                 ),
                               ),
@@ -319,7 +331,8 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                                         ? FontWeight.bold
                                         : FontWeight.normal,
                                     color: isSelected
-                                        ? widget.colors?.primaryColor ?? Colors.blue
+                                        ? widget.colors?.primaryColor ??
+                                              Colors.blue
                                         : Colors.black,
                                   ),
                                 ),
@@ -394,16 +407,13 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
           const SizedBox(height: 8),
         ],
 
-        if(widget.isShowYearPicker)... [
+        if (widget.isShowYearPicker) ...[
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                color: Colors.grey.shade200,
-                width: 1,
-              ),
+              border: Border.all(color: Colors.grey.shade200, width: 1),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -420,8 +430,10 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Icon(widget.leftArrowIcon ?? Icons.chevron_left,
-                      color: widget.iconColor,),
+                    child: Icon(
+                      widget.leftArrowIcon ?? Icons.chevron_left,
+                      color: widget.iconColor,
+                    ),
                   ),
                 ),
                 Container(
@@ -442,8 +454,10 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                       ),
                       child: Text(
                         DateFormat('MMMM yyyy').format(_currentDate),
-                        style: TextStyle(fontSize: 14, color: widget.monthYearTextColor ?? Colors.grey,
-                            fontWeight: FontWeight.w500
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: widget.monthYearTextColor ?? Colors.grey,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -461,7 +475,8 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Icon(widget.rightArrowIcon ?? Icons.chevron_right,
+                    child: Icon(
+                      widget.rightArrowIcon ?? Icons.chevron_right,
                       color: widget.iconColor,
                     ),
                   ),
@@ -503,8 +518,8 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                     color: isToday && !isSelected
                         ? todayBgColor.withValues(alpha: 0.1)
                         : (isSelected
-                        ? selectedBgColor.withValues(alpha: 0.2)
-                        : Colors.white),
+                              ? selectedBgColor.withValues(alpha: 0.2)
+                              : Colors.white),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12),
@@ -524,7 +539,10 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                         ),
                         const SizedBox(height: 4),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 2,
+                          ),
                           decoration: BoxDecoration(
                             color: isSelected ? Colors.white : primaryColor,
                             borderRadius: BorderRadius.circular(10),
@@ -547,8 +565,8 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                             color: isSelected
                                 ? selectedBgColor
                                 : (isToday && !isSelected
-                                ? todayBgColor
-                                : Colors.transparent),
+                                      ? todayBgColor
+                                      : Colors.transparent),
                           ),
                           child: Center(
                             child: Text(
@@ -559,10 +577,10 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
                                 color: isSelected
                                     ? selectedTextColor
                                     : (isToday && !isSelected
-                                    ? todayTextColor
-                                    : (isCurrentMonth
-                                    ? Colors.black
-                                    : Colors.grey.shade400)),
+                                          ? todayTextColor
+                                          : (isCurrentMonth
+                                                ? Colors.black
+                                                : Colors.grey.shade400)),
                               ),
                             ),
                           ),
@@ -638,5 +656,4 @@ class _EasyWeekCalendarState extends State<EasyWeekCalendar> {
   void _notifyWeekChange() {
     widget.onWeekChanged?.call(weekStartDate, weekEndDate);
   }
-
 }

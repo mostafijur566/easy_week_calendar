@@ -1,7 +1,3 @@
-import 'package:flutter_test/flutter_test.dart';
-
-import 'package:easy_week_calendar/easy_week_calendar.dart';
-
 void main() {
   // test('adds one to input values', () {
   //   final calculator = Calculator();
