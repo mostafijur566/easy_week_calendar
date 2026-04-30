@@ -15,8 +15,7 @@ A sleek and flexible week-view calendar for Flutter. Easily manage date selectio
 - **📱 Responsive:** Optimized for different screen widths using Expanded and GridView.
 
 ## Preview
-![EasyWeekCalendar Demo](https://github.com/mostafijur566/easy_week_calendar/blob/main/assets/demo.gif)
-
+![EasyWeekCalendar Demo](https://raw.githubusercontent.com/mostafijur566/easy_week_calendar/main/assets/demo.gif)
 ## Installation
 
 Add the following dependency to your `pubspec.yaml` file:
@@ -29,55 +28,41 @@ dependencies:
 Next, import the package
 
 ```
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:easy_week_calendar/easy_week_calendar.dart';
 ```
 
 ```
+import 'package:flutter/material.dart';
+import 'package:easy_week_calendar/easy_week_calendar.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(const MaterialApp(home: Scaffold(body: SafeArea(child: WeekCalendarExample()))));
 }
 
-class MyApp extends StatelessWidget {
+class WeekCalendarExample extends StatefulWidget {
+  const WeekCalendarExample({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Overlay Adaptive Progress Hub Example',
-      home: MyHomePage(),
-    );
-  }
+  State<WeekCalendarExample> createState() => _WeekCalendarExampleState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  bool _isLoading = false;
-
-  void _toggleLoading() {
-    setState(() {
-      _isLoading = !_isLoading;
-    });
-  }
-
+class _WeekCalendarExampleState extends State<WeekCalendarExample> {
   @override
   Widget build(BuildContext context) {
     return WeekCalendar(
-             onWeekChanged: notifier.onWeekChanged,
-             separatedColor: context.theme.dividerColor,
-             monthYearTextColor: titleTextColor,
-             colors: CalendarColors(
-               primaryColor: secondaryColor,
-               selectedBackgroundColor: secondaryColor,
-               todayBackgroundColor: secondaryColor,
-               selectedBorderColor: secondaryColor,
-               selectedTextColor: Colors.white,
-               todayTextColor: Colors.white,
-             ),
-             eventCounts: notifier.eventCounts,
-             onDateSelected: notifier.onDateSelected,
-           );
+      headerTitle: "My Calendar",
+      onDateSelected: (date) {
+        print("Selected Date: $date");
+      },
+      onWeekChanged: (start, end) {
+        print("Week changed: $start to $end");
+      },
+      // Example of event counts
+      eventCounts: {
+        DateTime.now(): 3,
+        DateTime.now().add(const Duration(days: 1)): 5,
+      },
+    );
   }
 }
 ```
