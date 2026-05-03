@@ -10,3 +10,7 @@
 ## 1.0.2
 * Added support for custom date formats in the header title.
 * Improved performance when rendering large numbers of events.
+
+## 1.0.3
+* Updated dependencies to ensure compatibility with the latest Flutter versions.
+* Minor UI tweaks for better responsiveness on smaller screens.
