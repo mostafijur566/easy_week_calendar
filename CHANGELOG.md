@@ -14,3 +14,6 @@
 ## 1.0.3
 * Updated dependencies to ensure compatibility with the latest Flutter versions.
 * Minor UI tweaks for better responsiveness on smaller screens.
+
+## 1.0.4
+* Example app added to demonstrate usage of the calendar widget.
